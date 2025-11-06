@@ -1,0 +1,134 @@
+{
+  "timestamp": "2025-11-06T21:06:45.840997",
+  "success_rate": 66.66666666666666,
+  "tests_passed": 14,
+  "tests_run": 21,
+  "test_results": [
+    {
+      "test": "API Root",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Generate Synthetic Iris 1",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Generate Synthetic Iris 2",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Generate Synthetic Iris 3",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Generate Synthetic Iris 4",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Generate Synthetic Iris 5",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "User Enrollment",
+      "success": false,
+      "details": "",
+      "error": "Expected 200, got 400 - {'detail': 'Liveness check failed: Unknown'}"
+    },
+    {
+      "test": "Generate Synthetic Iris 1",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Generate Synthetic Iris 2",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Generate Synthetic Iris 3",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Iris Verification",
+      "success": false,
+      "details": "",
+      "error": "Expected 200, got 404 - {'detail': 'Account not found'}"
+    },
+    {
+      "test": "Get Account Balance",
+      "success": false,
+      "details": "",
+      "error": "Expected 200, got 404 - {'detail': 'Account not found'}"
+    },
+    {
+      "test": "Deposit Transaction",
+      "success": false,
+      "details": "",
+      "error": "Expected 200, got 404 - {'detail': 'Account not found'}"
+    },
+    {
+      "test": "Withdraw Transaction",
+      "success": false,
+      "details": "",
+      "error": "Expected 200, got 404 - {'detail': 'Account not found'}"
+    },
+    {
+      "test": "Check Balance Transaction",
+      "success": false,
+      "details": "",
+      "error": "Expected 200, got 404 - {'detail': 'Account not found'}"
+    },
+    {
+      "test": "Get Transaction History",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Get Demo PIN",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Fallback Verification",
+      "success": false,
+      "details": "",
+      "error": "Expected 200, got 404 - {'detail': 'Account not found'}"
+    },
+    {
+      "test": "Admin - Get All Users",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Admin - Get Audit Logs",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    },
+    {
+      "test": "Admin - Get Biometrics Metadata",
+      "success": true,
+      "details": "Status: 200",
+      "error": ""
+    }
+  ]
+}
