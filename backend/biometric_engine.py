@@ -390,7 +390,9 @@ class IrisBiometricEngine:
             }
             
         except Exception as e:
+            import traceback
             logger.error(f"Liveness check error: {e}")
+            logger.error(f"Traceback: {traceback.format_exc()}")
             return {'is_live': False, 'reason': str(e)}
 
 
