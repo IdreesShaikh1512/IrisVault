@@ -74,16 +74,21 @@ class IrisVaultAPITester:
             return False, {}
 
     def generate_synthetic_iris_frames(self, count=5):
-        """Generate synthetic iris frames for testing"""
-        print(f"\n🎨 Generating {count} synthetic iris frames...")
+        """Generate synthetic iris frames for testing with variance"""
+        print(f"\n🎨 Generating {count} synthetic iris frames with variance...")
         frames = []
+        
+        # Use different seeds to create variance for liveness detection
+        seeds = [100, 250, 400, 550, 700, 850, 1000]
         
         for i in range(count):
             try:
+                # Use varied seeds to create different images
+                seed = seeds[i % len(seeds)] + (i * 50)
                 success, response = self.run_test(
                     f"Generate Synthetic Iris {i+1}",
                     "GET",
-                    f"generate-synthetic-iris?seed={i+100}",
+                    f"generate-synthetic-iris?seed={seed}",
                     200
                 )
                 if success and 'image' in response:
@@ -96,7 +101,7 @@ class IrisVaultAPITester:
                 # Use fallback frame
                 frames.append("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/2wBDAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQH/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwA/8A8A")
         
-        print(f"   Generated {len(frames)} frames")
+        print(f"   Generated {len(frames)} frames with varied seeds")
         return frames
 
     def test_api_root(self):
