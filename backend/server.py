@@ -109,16 +109,37 @@ class FallbackRequest(BaseModel):
 
 # ============= HELPER FUNCTIONS =============
 
+def convert_numpy_types(obj):
+    """Convert numpy types to Python native types for JSON serialization"""
+    import numpy as np
+    if isinstance(obj, dict):
+        return {k: convert_numpy_types(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [convert_numpy_types(v) for v in obj]
+    elif isinstance(obj, np.bool_):
+        return bool(obj)
+    elif isinstance(obj, np.integer):
+        return int(obj)
+    elif isinstance(obj, np.floating):
+        return float(obj)
+    elif isinstance(obj, np.ndarray):
+        return obj.tolist()
+    else:
+        return obj
+
 async def log_audit(event_type: str, account_number: str = None, user_id: str = None, 
                    success: bool = True, details: dict = {}):
     """Log audit event"""
     try:
+        # Convert numpy types to Python types
+        clean_details = convert_numpy_types(details)
+        
         log = AuditLog(
             user_id=user_id,
             account_number=account_number,
             event_type=event_type,
             success=success,
-            details=details
+            details=clean_details
         )
         doc = log.model_dump()
         doc['timestamp'] = doc['timestamp'].isoformat()
